@@ -2,8 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const urlRoutes = require('./routes/urlRoutes');
 const connectDB = require('./config/db');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 connectDB();
 
 app.use(express.json());
