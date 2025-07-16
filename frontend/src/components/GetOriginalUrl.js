@@ -1,5 +1,5 @@
-import styles from '../style';
 import React, { useState } from 'react';
+import styles from '../style';
 
 const GetOriginalUrl = () => {
   const [shortCode, setShortCode] = useState('');
@@ -35,18 +35,23 @@ const GetOriginalUrl = () => {
         style={styles.input}
       />
       <button onClick={handleFetch} style={styles.button}>Get Original</button>
+
       {urlData && (
-        <p>
-          Original URL:{' '}
-          <a
-            href={urlData.url.startsWith('http') ? urlData.url : `${urlData.url}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {urlData.url}
-          </a>
-        </p>
+        <div>
+          <p>
+            Original URL:{' '}
+            <a
+              href={urlData.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {urlData.url}
+            </a>
+          </p>
+          <p><strong>Access Count:</strong> {urlData.accessCount}</p>
+        </div>
       )}
+
       {error && <p style={styles.error}>{error}</p>}
     </div>
   );
