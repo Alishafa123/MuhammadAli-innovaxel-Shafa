@@ -1,4 +1,4 @@
-const Url = require('../models/Url');
+const Url = require('../models/url');
 const crypto = require('crypto');
 
 const generateShortCode = () => crypto.randomBytes(3).toString('hex');
