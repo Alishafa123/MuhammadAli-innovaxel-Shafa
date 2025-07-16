@@ -4,6 +4,7 @@ import CreateShortUrl from './components/CreateShortUrl';
 import GetOriginalUrl from './components/GetOriginalUrl';
 import UpdateShortUrl from './components/UpdateShortUrl';
 import DeleteShortUrl from './components/DeleteShortUrl';
+import AccessCountCard from './components/AccessCountCard';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <GetOriginalUrl />
         <UpdateShortUrl />
         <DeleteShortUrl />
+        <AccessCountCard />
       </div>
     </div>
   );
