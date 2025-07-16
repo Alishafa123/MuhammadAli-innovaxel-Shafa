@@ -8,7 +8,7 @@ const GetOriginalUrl = () => {
   const handleFetch = async () => {
     setError('');
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/shorten/${shortCode}`);
+      const res = await fetch(`http://localhost:8000/shorten/${shortCode}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setUrlData(data);
