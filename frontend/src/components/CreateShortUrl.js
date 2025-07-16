@@ -8,7 +8,7 @@ const CreateShortUrl = () => {
   const handleSubmit = async () => {
     setError('');
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/shorten`, {
+      const res = await fetch(`http://localhost:8000/shorten`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: longUrl })
@@ -32,7 +32,7 @@ const CreateShortUrl = () => {
       />
       <button onClick={handleSubmit}>Shorten</button>
       {shortCode && (
-        <p>Short URL: <a href={`${process.env.REACT_APP_API_BASE_URL}/shorten/${shortCode}`} target="_blank" rel="noreferrer">{shortCode}</a></p>
+        <p>Short URL: <a href={`http://localhost:8000/shorten/${shortCode}`} target="_blank" rel="noreferrer">{shortCode}</a></p>
       )}
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
