@@ -4,10 +4,9 @@ import GetOriginalUrl from './components/GetOriginalUrl';
 
 function App() {
   return (
-    <div className="App">
-      <h1>URL Shortener</h1>
+    <div style={{ backgroundColor: '#e9eff6', minHeight: '100vh', padding: '40px' }}>
+      <h1 style={{ textAlign: 'center' }}>🔗 URL Shortener</h1>
       <CreateShortUrl />
-      <hr />
       <GetOriginalUrl />
     </div>
   );

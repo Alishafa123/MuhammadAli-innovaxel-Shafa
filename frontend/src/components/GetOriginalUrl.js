@@ -1,3 +1,4 @@
+import styles from '../style';
 import React, { useState } from 'react';
 
 const GetOriginalUrl = () => {
@@ -8,16 +9,8 @@ const GetOriginalUrl = () => {
   const handleFetch = async () => {
     setError('');
     setUrlData(null);
-
-    if (!shortCode.trim()) {
-      setError('Please enter a short code.');
-      return;
-    }
-
     try {
       const res = await fetch(`http://localhost:8000/shorten/${shortCode}`);
-      
-      // Check if response is actually JSON
       const contentType = res.headers.get('content-type');
       if (!contentType || !contentType.includes('application/json')) {
         throw new Error('Unexpected response: Not JSON');
@@ -32,25 +25,21 @@ const GetOriginalUrl = () => {
   };
 
   return (
-    <div>
+    <div style={styles.card}>
       <h2>Get Original URL</h2>
       <input
         type="text"
         placeholder="Enter short code"
         value={shortCode}
         onChange={(e) => setShortCode(e.target.value)}
+        style={styles.input}
       />
-      <button onClick={handleFetch}>Get Original</button>
-
+      <button onClick={handleFetch} style={styles.button}>Get Original</button>
       {urlData && (
         <p>
-          Original URL:{" "}
+          Original URL:{' '}
           <a
-            href={
-              urlData.url.startsWith('http')
-                ? urlData.url
-                : `https://${urlData.url}`
-            }
+            href={urlData.url.startsWith('http') ? urlData.url : `${urlData.url}`}
             target="_blank"
             rel="noreferrer"
           >
@@ -58,8 +47,7 @@ const GetOriginalUrl = () => {
           </a>
         </p>
       )}
-
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={styles.error}>{error}</p>}
     </div>
   );
 };
